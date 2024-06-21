@@ -51,7 +51,7 @@ export const createNewUser = async (userData) => {
       method: 'POST',
       body: JSON.stringify(userData),
       headers: {
-          'Content-type': 'application/json;'
+        'Content-type': 'application/json'
       },
     });
     if (!response.ok) {

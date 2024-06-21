@@ -35,14 +35,6 @@ export default async function app(appDiv) {
   // render out the books
   renderBookList(bookListEl, books);
 
-  // getFirstThreeFantasyBooks().then(books => {
-  //   if (books) {
-  //     renderBookList(bookListEl, books);
-  //   } else {
-  //     console.warn("No books to display.")
-  //   }
-  // })
-
   bookListEl.addEventListener('click', async (event) => {
     if (event.target.tagName === "BUTTON") {
       const urlKey = event.target.getAttribute("data-author-url-key");
@@ -56,17 +48,9 @@ export default async function app(appDiv) {
   });
 
   newUserFormEl.addEventListener("submit", async (event) => {
-    // console.log('Form submit event detected');
     event.preventDefault();
-    // console.log('Default form submission prevented');
-    // event.stopImmediatePropagation();
 
     const formData = new FormData(newUserFormEl);
-    // const userData = {
-    //   username: formData.get("username"),
-    //   isCool: formData.get("isCool") === "on",
-    //   favoriteLanguage: formData.get("favoriteLanguage")
-    // };
     const formObject = Object.fromEntries(formData);
 
     try {

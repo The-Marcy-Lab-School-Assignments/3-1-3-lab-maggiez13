@@ -48,8 +48,6 @@ export const renderAuthorInfo = (authorInfoEl, author) => {
 export const renderNewUserForm = (newUserFormEl) => {
   newUserFormEl.innerHTML = ``;
 
-  const form = document.createElement("form");
-
   const usernameLabel = document.createElement("label");
   usernameLabel.setAttribute("for", "username");
   usernameLabel.textContent = "Username"; 
@@ -87,13 +85,10 @@ export const renderNewUserForm = (newUserFormEl) => {
   const button = document.createElement("button");
   button.textContent = "Create User";
 
-  form.append(usernameLabel, input, isCoolLabel, input2, favLanguage, select, button);
-
-  newUserFormEl.append(form);
+  newUserFormEl.append(usernameLabel, input, isCoolLabel, input2, favLanguage, select, button);
 }
 
 export const renderNewUser = (newUserEl, newUser) => {
-  console.log('render says hi')
   newUserEl.innerHTML = ``;
 
   const h2 = document.createElement('h2');
