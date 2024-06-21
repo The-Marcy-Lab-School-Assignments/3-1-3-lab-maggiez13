@@ -26,15 +26,59 @@ export default async function app(appDiv) {
   const newUserFormEl = document.createElement('form');
   newUserFormEl.id = 'new-user-form';
   appDiv.append(newUserFormEl);
+
   // Render the form!
-  // renderNewUserForm;
+  renderNewUserForm(newUserFormEl);
 
   // Fetch the books!
-  // const books =
+  const books = await getFirstThreeFantasyBooks();
   // render out the books
-  // renderBookList
+  renderBookList(bookListEl, books);
 
-  // bookListEl.addEventListener('???', () => {})
+  // getFirstThreeFantasyBooks().then(books => {
+  //   if (books) {
+  //     renderBookList(bookListEl, books);
+  //   } else {
+  //     console.warn("No books to display.")
+  //   }
+  // })
 
-  // newUserFormEl.addEventListener('???', () => {})
+  bookListEl.addEventListener('click', async (event) => {
+    if (event.target.tagName === "BUTTON") {
+      const urlKey = event.target.getAttribute("data-author-url-key");
+      const author = await getAuthor(urlKey);
+      if (author) {
+        renderAuthorInfo(authorInfoEl, author);
+      } else {
+        console.warn("Failed to get author info"); 
+      }
+    }
+  });
+
+  newUserFormEl.addEventListener('submit', async (event) => {
+    console.log(event)
+    event.preventDefault();
+
+    const formData = new FormData(newUserFormEl);
+    // const userData = {
+    //   username: formData.get("username"),
+    //   isCool: formData.get("isCool") === "on",
+    //   favoriteLanguage: formData.get("favoriteLanguage")
+    // };
+    const formObject = Object.fromEntries(formData)
+
+    try {
+      const newUser = await createNewUser(formObject);
+      if (newUser) {
+        console.log('hi')
+        renderNewUser(newUserEl, newUser);
+        newUserFormEl.reset();
+      } else {
+        console.warm("Failed to create new user");
+      }
+    }
+    catch (error) {
+      console.error("Error creating user:", error); 
+    }
+  })
 }
