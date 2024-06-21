@@ -15,15 +15,6 @@ export const getFirstThreeFantasyBooks = async () => {
       coverUrl: `https://covers.openlibrary.org/a/id/${work.cover_id}-M.jpg`
       }
     })
-    // const books = data.works.slice(0, 3).map((book) => ({
-    //   title: book.title,
-    //   author: {
-    //     name: book.authors[0].name,
-    //     urlKey: book.authors[0].key,
-    //   },
-    //   coverUrl: `https://covers.openlibrary.org/a/id/${book.cover_id}-M.jpg`
-    // }));
-    // return books;
   }
   catch (error) {
     console.warn(error.message);
@@ -56,7 +47,6 @@ export const getAuthor = async (urlKey) => {
 
 export const createNewUser = async (userData) => {
   try {
-    console.log('fetch says hi')
     const response = await fetch(`https://jsonplaceholder.typicode.com/users`, {
       method: 'POST',
       body: JSON.stringify(userData),

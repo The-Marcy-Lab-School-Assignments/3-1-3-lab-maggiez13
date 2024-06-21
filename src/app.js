@@ -55,9 +55,11 @@ export default async function app(appDiv) {
     }
   });
 
-  newUserFormEl.addEventListener('submit', async (event) => {
-    console.log(event)
+  newUserFormEl.addEventListener("submit", async (event) => {
+    // console.log('Form submit event detected');
     event.preventDefault();
+    // console.log('Default form submission prevented');
+    // event.stopImmediatePropagation();
 
     const formData = new FormData(newUserFormEl);
     // const userData = {
@@ -65,12 +67,11 @@ export default async function app(appDiv) {
     //   isCool: formData.get("isCool") === "on",
     //   favoriteLanguage: formData.get("favoriteLanguage")
     // };
-    const formObject = Object.fromEntries(formData)
+    const formObject = Object.fromEntries(formData);
 
     try {
       const newUser = await createNewUser(formObject);
       if (newUser) {
-        console.log('hi')
         renderNewUser(newUserEl, newUser);
         newUserFormEl.reset();
       } else {
