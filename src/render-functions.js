@@ -86,6 +86,12 @@ export const renderNewUserForm = (newUserFormEl) => {
   button.textContent = "Create User";
 
   newUserFormEl.append(usernameLabel, input, isCoolLabel, input2, favLanguage, select, button);
+  /*
+  FEEDBACK:
+    Great job on this! And awesome attention to detail! 
+    Just wanted to say u could have also write out the form with innerHTML,
+    both ways are completely valid! 
+  */
 }
 
 export const renderNewUser = (newUserEl, newUser) => {

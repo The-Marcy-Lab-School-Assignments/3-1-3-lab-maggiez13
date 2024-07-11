@@ -44,6 +44,9 @@ export default async function app(appDiv) {
       } else {
         console.warn("Failed to get author info"); 
       }
+      /*
+      Great job! And nice job on the error handling 
+      */
     }
   });
 
